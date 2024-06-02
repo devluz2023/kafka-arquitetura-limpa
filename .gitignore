@@ -1,0 +1,56 @@
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# Maven target directory
+/target/
+
+# Eclipse
+.classpath
+.project
+.settings/
+.metadata/
+
+# IntelliJ
+.idea/
+
+# NetBeans
+nbproject/
+
+# Gradle
+.gradle/
+build/
+
+# Compiled Java bytecode
+bin/
+
+# Compiled Kotlin bytecode
+bin/
+build/
+
+# Compiled Clojure bytecode
+classes/
+
+# Compiled Groovy bytecode
+out/
+
+# Compiled Scala bytecode
+bin/
+target/
+
+# Compiled Ruby bytecode
+.class/
+postgres/

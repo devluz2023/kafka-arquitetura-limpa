@@ -8,8 +8,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="service-api" />
-        <module name="service-retry" />
         <module name="service-principal" />
+        <module name="service-retry" />
       </profile>
     </annotationProcessing>
   </component>
