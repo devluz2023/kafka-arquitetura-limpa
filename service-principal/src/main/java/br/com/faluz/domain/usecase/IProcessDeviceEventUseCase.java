@@ -1,8 +1,7 @@
 package br.com.faluz.domain.usecase;
 
-
-import br.com.faluz.infra.db.model.DeviceEvent;
+import br.com.faluz.domain.entity.Device;
 
 public interface IProcessDeviceEventUseCase {
-    void execute(DeviceEvent deviceEvent);
+    void execute(Device deviceEvent);
 }

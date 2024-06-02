@@ -1,6 +1,6 @@
 package br.com.faluz.infra.db.repository;
 
-import br.com.faluz.domain.entity.Device;
+import br.com.faluz.infra.db.model.Device;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

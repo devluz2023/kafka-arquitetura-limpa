@@ -3,6 +3,5 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/service-retry" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/service-retry1" vcs="Git" />
   </component>
 </project>
