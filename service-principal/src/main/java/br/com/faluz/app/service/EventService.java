@@ -19,10 +19,14 @@ public class EventService {
     }
 
     public DeviceContractedEventDTO createDeviceContractedEvent(String device, LocalDate releaseDate, String clientName) {
-        return new DeviceContractedEventDTO(device, releaseDate, clientName, zonedDateFactory.now());
+        String formattedDate = zonedDateFactory.formatAndParseDate(releaseDate);
+        LocalDate parsedDate = zonedDateFactory.parseFormattedDate(formattedDate);
+        return new DeviceContractedEventDTO(device, parsedDate, clientName);
     }
 
     public AccountCodeContractedEventDTO createAccountCodeContractedEvent(String accountcode, LocalDate releaseDate, String clientName) {
-        return new AccountCodeContractedEventDTO(accountcode, releaseDate, clientName, zonedDateFactory.now());
+        String formattedDate = zonedDateFactory.formatAndParseDate(releaseDate);
+        LocalDate parsedDate = zonedDateFactory.parseFormattedDate(formattedDate);
+        return new AccountCodeContractedEventDTO(accountcode, parsedDate, clientName);
     }
 }

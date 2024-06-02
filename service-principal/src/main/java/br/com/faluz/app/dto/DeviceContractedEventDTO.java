@@ -8,11 +8,11 @@ import java.time.ZonedDateTime;
 public record DeviceContractedEventDTO(
         String device,
 
-        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+
         LocalDate releaseDate,
 
-        String clientName,
+        String clientName
 
-        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
-        ZonedDateTime eventTime
+
+
 ) {}
