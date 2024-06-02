@@ -16,10 +16,10 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class RetryEventsProducer {
     private static final String TOPIC_NAME = "devices.events.retry";
-//    @Autowired
-//    private KafkaTemplate<String, RetryEventDTO> kafkaTemplate;
-//
-//    public void sendRetryEvent(RetryEventDTO event) {
-//        kafkaTemplate.send(TOPIC_NAME, event);
-//    }
+    @Autowired
+    private KafkaTemplate<String, RetryEventDTO> kafkaTemplate;
+
+    public void sendRetryEvent(RetryEventDTO event) {
+       kafkaTemplate.send(TOPIC_NAME, event);
+    }
 }

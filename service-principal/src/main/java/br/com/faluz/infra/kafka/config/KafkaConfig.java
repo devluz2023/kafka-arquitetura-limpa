@@ -1,7 +1,6 @@
 package br.com.faluz.infra.kafka.config;
 
-import br.com.faluz.app.dto.AccountCodeContractedEventDTO;
-import br.com.faluz.app.dto.DeviceContractedEventDTO;
+import br.com.faluz.app.dto.*;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -26,7 +25,7 @@ public class KafkaConfig {
     @Value("${kafka.bootstrapAddress:kafka:9092}")
     private String bootstrapAddress;
 
-    public ProducerFactory<String, Object> producerFactory() {
+    private <T> ProducerFactory<String, T> createProducerFactory(Class<T> clazz) {
         Map<String, Object> props = new HashMap<>();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -34,11 +33,24 @@ public class KafkaConfig {
         return new DefaultKafkaProducerFactory<>(props);
     }
 
-    @Bean
-    public KafkaTemplate<String, Object> kafkaTemplate() {
-        return new KafkaTemplate<>(producerFactory());
+    private <T> KafkaTemplate<String, T> createKafkaTemplate(Class<T> clazz) {
+        return new KafkaTemplate<>(createProducerFactory(clazz));
     }
 
+    @Bean
+    public KafkaTemplate<String, DlqEventDTO> dlqEventDTOKafkaTemplate() {
+        return createKafkaTemplate(DlqEventDTO.class);
+    }
+
+    @Bean
+    public KafkaTemplate<String, RetryEventDTO> retryEventDTOKafkaTemplate() {
+        return createKafkaTemplate(RetryEventDTO.class);
+    }
+
+    @Bean
+    public KafkaTemplate<String, DeviceReleasedEventDTO> deviceReleasedEventDTOKafkaTemplate() {
+        return createKafkaTemplate(DeviceReleasedEventDTO.class);
+    }
     public ConsumerFactory<String, AccountCodeContractedEventDTO> accountCodeConsumerFactory() {
         JsonDeserializer<AccountCodeContractedEventDTO> deserializer = new JsonDeserializer<>(AccountCodeContractedEventDTO.class);
         deserializer.addTrustedPackages("*");

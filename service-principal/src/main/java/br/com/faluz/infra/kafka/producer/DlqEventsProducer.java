@@ -19,10 +19,10 @@ public class DlqEventsProducer {
 
     private static final String TOPIC_NAME = "devices.events.dlq";
 
-//    @Autowired
-//    private KafkaTemplate<String, DlqEventDTO> kafkaTemplate;
-//
-//    public void sendDlqEvent(DlqEventDTO event) {
-//        kafkaTemplate.send(TOPIC_NAME, event);
-//    }
+   @Autowired
+   private KafkaTemplate<String, DlqEventDTO> kafkaTemplate;
+
+   public void sendDlqEvent(DlqEventDTO event) {
+        kafkaTemplate.send(TOPIC_NAME, event);
+    }
 }

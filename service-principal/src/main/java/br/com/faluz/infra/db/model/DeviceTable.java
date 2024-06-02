@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Setter
 @Entity(name="devices")
 @Table(name="devices")
-public class Device {
+public class DeviceTable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,14 +27,14 @@ public class Device {
     private Boolean releaseForUse ;
 
 
-    public Device(DevicetDTO data){
+    public DeviceTable(DevicetDTO data){
         this.id= data.id();
         this.device= data.device();
         this.releaseDate = data.releaseDate();
         this.releaseForUse= data.releaseForUse();
     }
 
-    public Device() {
+    public DeviceTable() {
 
     }
 }
