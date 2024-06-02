@@ -1,0 +1,4 @@
+br\com\faluz\app\dto\DeviceContractedDTO.class
+br\com\faluz\app\service\DeviceService.class
+br\com\faluz\app\rest\DeviceController.class
+br\com\faluz\ServiceApiApplication.class
