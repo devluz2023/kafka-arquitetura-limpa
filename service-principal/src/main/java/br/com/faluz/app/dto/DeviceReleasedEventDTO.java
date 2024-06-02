@@ -1,4 +1,10 @@
 package br.com.faluz.app.dto;
 
-public record DeviceReleasedEventDTO(String device) {
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public record DeviceReleasedEventDTO(
+        @JsonProperty("device") String device,
+        @JsonProperty("releaseDate") String releaseDate,
+        @JsonProperty("clientName") String clientName
+) {
 }

@@ -1,6 +1,18 @@
 package br.com.faluz.app.dto;
-import java.time.LocalDate;
 
-public record DeviceContractedEventDTO(String device,
-                                       LocalDate releaseDate, String clientName) {
-}
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
+
+public record DeviceContractedEventDTO(
+        String device,
+
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+        LocalDate releaseDate,
+
+        String clientName,
+
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+        ZonedDateTime eventTime
+) {}
