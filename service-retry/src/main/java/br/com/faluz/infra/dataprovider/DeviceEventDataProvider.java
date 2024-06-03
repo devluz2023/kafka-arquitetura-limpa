@@ -1,24 +1,17 @@
 package br.com.faluz.infra.dataprovider;
 
 import br.com.faluz.domain.entity.Device;
-import br.com.faluz.domain.gateway.IDeviceEventGateway;
-import br.com.faluz.infra.db.model.DeviceEvent;
-import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
 @Component
-@RequiredArgsConstructor
-public class DeviceEventDataProvider implements IDeviceEventGateway {
+public class DeviceEventDataProvider {
 
-
-
-    @Override
-    public void save(Device deviceEvent) {
-
-    }
-
-    @Override
-    public void callExternalApi(Device deviceEvent) {
-
+    public ResponseEntity<Device> callExternalApi(Device request) {
+        RestTemplate restTemplate = new RestTemplate();
+        // Make the POST request and receive the response
+        return restTemplate.postForEntity("http://localhost:8080/device/contracted",
+                request, Device.class);
     }
 }
