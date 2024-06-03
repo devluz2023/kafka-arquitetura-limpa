@@ -41,25 +41,31 @@ services:
       KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
-#  service-api:
-#    image: service-api
-#    build:
-#      context: ./service-api
-#    container_name: service-pai
-#    ports:
-#      - 8080:8080
+  service-api:
+    image: service-api
+    build:
+      context: ./service-api
+    container_name: service-pai
+    ports:
+      - 8080:8080
 
-#  service-principal:
-#    image: service-principal
-#    container_name: service-principal
-#    ports:
-#      - 8081:8080
-#    depends_on:
-#      - kafka
-#  service-retry:
-#    image: service-retry
-#    container_name: service-retry
-#    ports:
-#      - 8082:8081
-#    depends_on:
-#      - kafka
+  service-principal:
+    image: service-principal
+    build:
+      context: ./service-principal
+    container_name: service-principal
+    ports:
+      - 8082:8082
+    depends_on:
+      - service-api
+      - kafka
+  service-retry:
+    image: service-retry
+    build:
+      context: ./service-retry
+    container_name: service-retry
+    ports:
+      - 8081:8081
+    depends_on:
+      - service-api
+      - kafka
